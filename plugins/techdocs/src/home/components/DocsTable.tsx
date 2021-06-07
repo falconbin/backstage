@@ -18,9 +18,9 @@ import React from 'react';
 import { useCopyToClipboard } from 'react-use';
 import { generatePath } from 'react-router-dom';
 
-import { IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, Tooltip, Button } from '@material-ui/core';
 import ShareIcon from '@material-ui/icons/Share';
-import { Table, EmptyState, Button, SubvalueCell, Link } from '@backstage/core';
+import { Table, EmptyState, SubvalueCell, Link } from '@backstage/core';
 import { Entity } from '@backstage/catalog-model';
 import { rootDocsRouteRef } from '../../routes';
 
@@ -111,8 +111,8 @@ export const DocsTable = ({
           action={
             <Button
               color="primary"
-              href="#"
-              to="https://backstage.io/docs/features/techdocs/getting-started"
+              target="_blank"
+              href="https://backstage.io/docs/features/techdocs/getting-started"
               variant="contained"
             >
               DOCS
