@@ -70,6 +70,7 @@ export type AppComponents = {
     BootErrorPage: ComponentType<BootErrorPageProps>;
     Progress: ComponentType<{}>;
     Router: ComponentType<{}>;
+    ErrorBoundaryFallback: ComponentType<ErrorBoundaryFallbackProps>;
     SignInPage?: ComponentType<SignInPageProps>;
 };
 
@@ -172,7 +173,7 @@ export function createApiFactory<Api, Impl extends Api>(api: ApiRef<Api>, instan
 export function createApiRef<T>(config: ApiRefConfig): ApiRef<T>;
 
 // @public (undocumented)
-export function createComponentExtension<T extends (props: any) => JSX.Element>(options: {
+export function createComponentExtension<T extends (props: any) => JSX.Element | null>(options: {
     component: ComponentLoader<T>;
 }): Extension<T>;
 
@@ -189,13 +190,13 @@ export function createExternalRouteRef<Params extends {
 export function createPlugin<Routes extends AnyRoutes = {}, ExternalRoutes extends AnyExternalRoutes = {}>(config: PluginConfig<Routes, ExternalRoutes>): BackstagePlugin<Routes, ExternalRoutes>;
 
 // @public (undocumented)
-export function createReactExtension<T extends (props: any) => JSX.Element>(options: {
+export function createReactExtension<T extends (props: any) => JSX.Element | null>(options: {
     component: ComponentLoader<T>;
     data?: Record<string, unknown>;
 }): Extension<T>;
 
 // @public (undocumented)
-export function createRoutableExtension<T extends (props: any) => JSX.Element>(options: {
+export function createRoutableExtension<T extends (props: any) => JSX.Element | null>(options: {
     component: () => Promise<T>;
     mountPoint: RouteRef;
 }): Extension<T>;
@@ -237,6 +238,13 @@ export type ErrorApi = {
 
 // @public (undocumented)
 export const errorApiRef: ApiRef<ErrorApi>;
+
+// @public (undocumented)
+export type ErrorBoundaryFallbackProps = {
+    plugin?: BackstagePlugin;
+    error: Error;
+    resetError: () => void;
+};
 
 // @public
 export type ErrorContext = {
