@@ -1,5 +1,17 @@
 # @backstage/plugin-techdocs-backend
 
+## 0.8.3
+
+### Patch Changes
+
+- 6013a16dc: TechDocs: Support configurable working directory as temp dir
+- 3108ff7bf: Make `yarn dev` respect the `PLUGIN_PORT` environment variable.
+- Updated dependencies [e5cdf0560]
+- Updated dependencies [772dbdb51]
+- Updated dependencies [1d2ed7844]
+  - @backstage/backend-common@0.8.3
+  - @backstage/catalog-model@0.8.3
+
 ## 0.8.2
 
 ### Patch Changes

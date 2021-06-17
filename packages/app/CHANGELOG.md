@@ -1,5 +1,40 @@
 # example-app
 
+## 0.2.33
+
+### Patch Changes
+
+- Updated dependencies [172c97324]
+- Updated dependencies [30c2fdad2]
+- Updated dependencies [3108ff7bf]
+- Updated dependencies [2ebc430c4]
+- Updated dependencies [e2d68f1ce]
+- Updated dependencies [b861c082b]
+- Updated dependencies [938aee2fb]
+- Updated dependencies [2ec118cc2]
+- Updated dependencies [873116e5d]
+- Updated dependencies [6c12f0ec6]
+- Updated dependencies [42a2d2ebc]
+- Updated dependencies [2e1fbe203]
+- Updated dependencies [14ce64b4f]
+- Updated dependencies [667656c8b]
+- Updated dependencies [d2d42a7fa]
+- Updated dependencies [1d2ed7844]
+- Updated dependencies [2ebc430c4]
+- Updated dependencies [d4644f592]
+  - @backstage/plugin-catalog-react@0.2.3
+  - @backstage/plugin-catalog@0.6.3
+  - @backstage/cli@0.7.1
+  - @backstage/plugin-api-docs@0.5.0
+  - @backstage/plugin-jenkins@0.4.5
+  - @backstage/plugin-techdocs@0.9.6
+  - @backstage/plugin-circleci@0.2.16
+  - @backstage/plugin-catalog-import@0.5.10
+  - @backstage/plugin-sentry@0.3.12
+  - @backstage/plugin-user-settings@0.2.11
+  - @backstage/catalog-model@0.8.3
+  - @backstage/core@0.7.13
+
 ## 0.2.32
 
 ### Patch Changes

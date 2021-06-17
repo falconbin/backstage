@@ -1,5 +1,17 @@
 # @backstage/plugin-jenkins
 
+## 0.4.5
+
+### Patch Changes
+
+- b861c082b: Support showing build details for branches with slashes in their names
+- Updated dependencies [172c97324]
+- Updated dependencies [1d2ed7844]
+- Updated dependencies [d4644f592]
+  - @backstage/plugin-catalog-react@0.2.3
+  - @backstage/catalog-model@0.8.3
+  - @backstage/core@0.7.13
+
 ## 0.4.4
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @backstage/plugin-sentry
 
+## 0.3.12
+
+### Patch Changes
+
+- 6c12f0ec6: Migrated the package from `timeago.js` to `luxon`. See #4278
+- Updated dependencies [172c97324]
+- Updated dependencies [1d2ed7844]
+- Updated dependencies [d4644f592]
+  - @backstage/plugin-catalog-react@0.2.3
+  - @backstage/catalog-model@0.8.3
+  - @backstage/core@0.7.13
+
 ## 0.3.11
 
 ### Patch Changes
