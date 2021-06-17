@@ -24,6 +24,7 @@ import {
   RouteRef,
   SubRouteRef,
   ExternalRouteRef,
+  PluginOutput,
 } from '@backstage/core-plugin-api';
 import { AppConfig } from '@backstage/config';
 import { AppIcons } from './icons';
@@ -59,11 +60,18 @@ export type SignInPageProps = {
   onResult(result: SignInResult): void;
 };
 
+export type ErrorBoundaryFallbackProps = {
+  plugin?: BackstagePlugin;
+  error: Error;
+  resetError: () => void;
+};
+
 export type AppComponents = {
   NotFoundErrorPage: ComponentType<{}>;
   BootErrorPage: ComponentType<BootErrorPageProps>;
   Progress: ComponentType<{}>;
   Router: ComponentType<{}>;
+  ErrorBoundaryFallback: ComponentType<ErrorBoundaryFallbackProps>;
 
   /**
    * An optional sign-in page that will be rendered instead of the AppRouter at startup.
@@ -124,6 +132,21 @@ export type AppRouteBinder = <
   >,
 ) => void;
 
+// Output from newer or older plugin API versions that might not be supported by
+// this version of the app API, but we don't want to break at the type checking level.
+// We only use this more permissive type for the `createApp` options, as we otherwise
+// want to stick to using the type for the outputs that we know about in this version
+// of the app api.
+type UnknownPluginOutput = {
+  type: string;
+};
+export type BackstagePluginWithAnyOutput = Omit<
+  BackstagePlugin<any, any>,
+  'output'
+> & {
+  output(): (PluginOutput | UnknownPluginOutput)[];
+};
+
 export type AppOptions = {
   /**
    * A collection of ApiFactories to register in the application to either
@@ -134,12 +157,12 @@ export type AppOptions = {
   /**
    * Supply icons to override the default ones.
    */
-  icons?: AppIcons & { [key in string]: IconComponent };
+  icons?: Partial<AppIcons> & { [key in string]: IconComponent };
 
   /**
    * A list of all plugins to include in the app.
    */
-  plugins?: BackstagePlugin<any, any>[];
+  plugins?: BackstagePluginWithAnyOutput[];
 
   /**
    * Supply components to the app to override the default ones.

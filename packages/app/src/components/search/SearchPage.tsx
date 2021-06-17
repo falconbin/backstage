@@ -20,9 +20,9 @@ import { makeStyles, Theme, Grid, List, Paper } from '@material-ui/core';
 import { Content, Header, Lifecycle, Page } from '@backstage/core';
 import { CatalogResultListItem } from '@backstage/plugin-catalog';
 import {
-  SearchBarNext as SearchBar,
-  SearchFilterNext as SearchFilter,
-  SearchResultNext as SearchResult,
+  SearchBar,
+  SearchFilter,
+  SearchResult,
   DefaultResultListItem,
 } from '@backstage/plugin-search';
 

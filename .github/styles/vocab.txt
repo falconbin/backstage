@@ -38,6 +38,8 @@ codeblocks
 Codecov
 codehilite
 Codehilite
+codemod
+codemods
 codeowners
 composability
 composable
@@ -262,6 +264,7 @@ tooltips
 touchpoints
 transpilation
 transpiled
+truthy
 ui
 unmanaged
 unregister

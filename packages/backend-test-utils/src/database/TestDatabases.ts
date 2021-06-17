@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { SingleConnectionDatabaseManager } from '@backstage/backend-common';
+import { DatabaseManager } from '@backstage/backend-common';
 import { ConfigReader } from '@backstage/config';
 import { Knex } from 'knex';
 import { isDockerDisabledForTests } from '../util/isDockerDisabledForTests';
@@ -56,7 +56,11 @@ export class TestDatabases {
       disableDocker: isDockerDisabledForTests(),
     };
 
-    const { ids, disableDocker } = Object.assign(defaultOptions, options ?? {});
+    const { ids, disableDocker } = Object.assign(
+      {},
+      defaultOptions,
+      options ?? {},
+    );
 
     const supportedIds = ids.filter(id => {
       const properties = allDatabases[id];
@@ -138,7 +142,7 @@ export class TestDatabases {
 
     // Ensure that a unique logical database is created in the instance
     const connection = await instance.databaseManager
-      .forPlugin(String(this.lastDatabaseIndex++))
+      .forPlugin(String(`db${this.lastDatabaseIndex++}`))
       .getClient();
 
     instance.connections.push(connection);
@@ -153,7 +157,7 @@ export class TestDatabases {
       if (envVarName) {
         const connectionString = process.env[envVarName];
         if (connectionString) {
-          const databaseManager = SingleConnectionDatabaseManager.fromConfig(
+          const databaseManager = DatabaseManager.fromConfig(
             new ConfigReader({
               backend: {
                 database: {
@@ -191,7 +195,7 @@ export class TestDatabases {
       properties.dockerImageName!,
     );
 
-    const databaseManager = SingleConnectionDatabaseManager.fromConfig(
+    const databaseManager = DatabaseManager.fromConfig(
       new ConfigReader({
         backend: {
           database: {
@@ -216,7 +220,7 @@ export class TestDatabases {
       properties.dockerImageName!,
     );
 
-    const databaseManager = SingleConnectionDatabaseManager.fromConfig(
+    const databaseManager = DatabaseManager.fromConfig(
       new ConfigReader({
         backend: {
           database: {
@@ -237,7 +241,7 @@ export class TestDatabases {
   private async initSqlite(
     _properties: TestDatabaseProperties,
   ): Promise<Instance> {
-    const databaseManager = SingleConnectionDatabaseManager.fromConfig(
+    const databaseManager = DatabaseManager.fromConfig(
       new ConfigReader({
         backend: {
           database: {
